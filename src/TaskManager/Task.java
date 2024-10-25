@@ -18,7 +18,7 @@ public class Task {
         return isComplete;
     }
 
-    public void markAsComplete() {
+    public void markAsCompleted() {
         this.isComplete = true;
     }
 
@@ -26,6 +26,7 @@ public class Task {
     public String toString() {
         return this.description + " - " + (this.isComplete ? "Completed" : "Not Completed");
     }
+
 
 
 }
