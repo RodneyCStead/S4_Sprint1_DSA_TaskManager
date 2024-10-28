@@ -44,7 +44,7 @@ public class TaskList {
     public void printTasks() {
         Node current = head;
         while (current != null) {
-            System.out.println(current.task);
+            System.out.println(current.task.getDescription() + " - " + (current.task.isCompleted() ? "Completed" : "Not Completed"));
             current = current.next;
         }
     }

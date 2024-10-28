@@ -24,5 +24,6 @@ public class User {
     public void printTasks() {
         System.out.println("Tasks for " + name + ":");
         taskList.printTasks();
+        System.out.println();
     }
 }
