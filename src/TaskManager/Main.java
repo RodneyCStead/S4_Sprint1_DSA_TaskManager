@@ -8,23 +8,15 @@ public class Main {
 
     public static void main(String[] args) {
         // Create users
-        User user1 = new User("Alice");
-        User user2 = new User("Bob");
-
-        // Add users to the list
-        System.out.println("Users:");
-
-        System.out.println(user1.getName());
-        System.out.println(user2.getName());
-
-        users.add(user1);
-        users.add(user2);
+        addUser("Alice");
+        addUser("Bob");
+        addUser("Alice"); // This will not be added as a duplicate
 
         // Add tasks to users
-        user1.addTask("Buy groceries");
-        user1.addTask("Read a book");
-        user2.addTask("Write code");
-        user2.addTask("Go for a walk");
+        users.get(0).addTask("Buy groceries");
+        users.get(0).addTask("Read a book");
+        users.get(1).addTask("Write code");
+        users.get(1).addTask("Go for a walk");
 
         // Showing tasks per user before marking completion
         System.out.println();
@@ -35,10 +27,10 @@ public class Main {
         }
 
         // Mark a task as completed
-        user1.markTaskAsCompleted("Buy groceries");
-        System.out.println(user1.getName() + " has completed the task 'Buy groceries'");
-        user2.markTaskAsCompleted("Go for a walk");
-        System.out.println(user2.getName() + " has completed the task 'Go for a walk'");
+        users.get(0).markTaskAsCompleted("Buy groceries");
+        System.out.println(users.get(0).getName() + " has completed the task 'Buy groceries'");
+        users.get(1).markTaskAsCompleted("Go for a walk");
+        System.out.println(users.get(1).getName() + " has completed the task 'Go for a walk'");
 
         // Print all tasks for each user
         System.out.println();
@@ -48,4 +40,23 @@ public class Main {
             user.printTasks();
         }
     }
+
+    private static void addUser(String name) {
+        if (!userExists(name)) {
+            users.add(new User(name));
+            System.out.println("User " + name + " added.");
+        } else {
+            System.out.println("\nUser " + name + " already exists, duplicate entries not accepted.");
+        }
+    }
+
+    private static boolean userExists(String name) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
